@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "circularprogress",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/CircularProgress",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8bb9dd2820b1cc123f2629c86c569c9f6e5edb66"
+      }
+    }
+  ],
+  "version" : 2
+}
