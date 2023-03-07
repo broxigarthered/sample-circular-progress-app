@@ -12,19 +12,11 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let circularProgress = CircularProgress(size: 200)
-//        self.view.window?.contentView?.addSubview(circularProgress)
-        self.view.addSubview(circularProgress)
-        
     }
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+    @IBAction func didTapOnOpenCircularProgressView(_ sender: Any) {
+        let controller = CircularProgressVC(nib: "CircularProgressVC", bundle: nil, timer: 3)
+        self.presentAsModalWindow(controller)
     }
-
-
 }
 
