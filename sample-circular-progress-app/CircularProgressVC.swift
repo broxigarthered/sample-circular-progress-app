@@ -31,18 +31,18 @@ class CircularProgressVC: NSViewController {
         self.view.layer?.backgroundColor = .black
     }
     
-    /// This function simulates a service call, which would take two seconds
+    /// This function simulates a service call, which would take two seconds.
     private func completeProgressAfter(seconds: Double) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
             self.completeProgress()
         }
     }
     
-    /// Marks the progress as complete and performs close after two seconds
+    /// Marks the progress as complete and performs close on the window after two seconds.
     private func completeProgress() {
         circularProgress.progress = 1
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.view.window?.performClose(self)
         }
     }
