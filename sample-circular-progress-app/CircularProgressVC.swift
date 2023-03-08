@@ -25,6 +25,10 @@ class CircularProgressVC: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Changes the background color to black
+        self.view.wantsLayer = true
+        self.view.layer?.backgroundColor = .black
     }
     
     /// This function simulates a service call, which would take two seconds
