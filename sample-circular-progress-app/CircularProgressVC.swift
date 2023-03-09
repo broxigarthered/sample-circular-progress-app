@@ -11,6 +11,19 @@ import CircularProgress
 class CircularProgressVC: NSViewController {
     
     let circularProgress = CircularProgress(size: 200)
+    let statusLabel: NSTextField = {
+        let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 100, height: 20))
+        textField.stringValue = "Loading..."
+        textField.textColor = .white
+        textField.backgroundColor = .clear
+        textField.isEditable = false
+        textField.isBezeled = false
+        textField.drawsBackground = false
+        textField.isSelectable = false
+        textField.translatesAutoresizingMaskIntoConstraints = false
+
+        return textField
+    }()
     
     init(nib: String, bundle: Bundle?, timer seconds: Double) {
         super.init(nibName: nib, bundle: bundle)
@@ -41,6 +54,7 @@ class CircularProgressVC: NSViewController {
     /// Marks the progress as complete and performs close on the window after two seconds.
     private func completeProgress() {
         circularProgress.progress = 1
+        statusLabel.stringValue = "Completed"
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.view.window?.performClose(self)
@@ -51,11 +65,14 @@ class CircularProgressVC: NSViewController {
     private func configureProgressView() {
         circularProgress.isCancellable = true
         circularProgress.isIndeterminate = true
-        self.view.addSubview(circularProgress)
+        view.addSubview(circularProgress)
+        view.addSubview(statusLabel)
         
         NSLayoutConstraint.activate([
             circularProgress.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            circularProgress.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            circularProgress.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+
+            statusLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
 }
